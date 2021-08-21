@@ -2,22 +2,54 @@
 <html>
     <head>
         <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <meta name="apple-mobile-web-app-capable" content="yes">
     </head>
     <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
     <script src="https://raw.githack.com/jeromeetienne/AR.js/master/aframe/build/aframe-ar.min.js"></script>
     <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
 
+    <script>
+
+        // Invitation Video Handler
+                  
+        AFRAME.registerComponent('video-vidhandler', {
+          init: function() {
+            this.toggle = false;
+            this.vid = document.querySelector("#beginnings");
+            this.vid.pause();
+          },
+          tick: function() {
+            if (this.el.object3D.visible == true) {
+              if (!this.toggle) {
+                  this.toggle = true;
+                  this.vid.play();
+              }
+            } else {
+              this.toggle = false;
+              this.vid.pause();
+            }
+          }
+        });
+      
+      </script>
+
     <body style='margin : 0px; overflow: hidden;'>
         <!-- we add detectionMode and matrixCodeType to tell AR.js to recognize barcode markers -->
-        <a-scene embedded vr-mode-ui="enabled: false" arjs="sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;">
+        <a-scene embedded vr-mode-ui="enabled: false" arjs="sourceType: webcam; debugUIEnabled: true; detectionMode: mono_and_matrix; matrixCodeType: 3x3;">
 
             <a-assets>
-                <video id="beginnings" autoplay loop="true" src="Beginnings.mp4"></video>
+                <video id="beginnings" autoplay loop="true" src="Beginnings.mp4" crossorigin webkit-playsinline playsinline controls></video>
               </a-assets>
 
         <a-marker type='barcode' value='6'>
             <a-video src="#beginnings" width="3" height="3"></a-video>
         </a-marker>
+        
+  <a-marker type='barcode' value='6' video-vidhandler>
+           
+    <a-plane scale = "4 2" position='0 0.1 0' rotation="-90 0 0" material='transparent:true;src:#beginnings' controls></a-plane>
+            
+  </a-marker>
 
         <a-entity camera></a-entity>
         </a-scene>
