@@ -35,7 +35,7 @@
 
     <body style='margin : 0px; overflow: hidden;'>
         <!-- we add detectionMode and matrixCodeType to tell AR.js to recognize barcode markers -->
-        <a-scene embedded vr-mode-ui="enabled: false" arjs="sourceType: webcam; debugUIEnabled: true; detectionMode: mono_and_matrix; matrixCodeType: 3x3;">
+        <a-scene embedded vr-mode-ui="enabled: false" arjs="sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;">
 
             <a-assets>
                 <video id="beginnings" autoplay loop="true" src="Beginnings.mp4" crossorigin webkit-playsinline playsinline controls></video>
@@ -43,7 +43,7 @@
         
             <a-marker type='barcode' value='6' video-vidhandler>
                     
-                <a-plane scale = "2 2" position='0 0.1 0' rotation="-90 0 0" material='transparent:true;src:#beginnings' controls></a-plane>
+                <a-plane scale = "4 4" position='0 0.1 0' rotation="-90 0 0" material='transparent:true;src:#beginnings' controls></a-plane>
                         
             </a-marker>
 
