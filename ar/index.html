@@ -35,7 +35,7 @@
 
     <body style='margin : 0px; overflow: hidden;'>
         <!-- we add detectionMode and matrixCodeType to tell AR.js to recognize barcode markers -->
-        <a-scene embedded vr-mode-ui="enabled: false" arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;">
+        <a-scene embedded vr-mode-ui="enabled: false" arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;" gltf-model="dracoDecoderPath: https://www.gstatic.com/draco/v1/decoders/;">
 
             <a-assets>
                 <video id="beginnings" autoplay loop="true" src="Beginnings.mp4" crossorigin webkit-playsinline playsinline controls></video>
@@ -46,8 +46,8 @@
             smoothCount="10"
             smoothTolerance=".01"
             smoothThreshold="5">
-                    
-                <a-plane scale = "4 4" position='0 0.1 -1.5' rotation="-90 0 0" material='transparent:true;src:#beginnings' controls></a-plane>
+                <a-entity gltf-model="url(171.glb)"></a-entity>
+                <!-- <a-plane scale = "4 4" position='0 0.1 -1.5' rotation="-90 0 0" material='transparent:true;src:#beginnings' controls></a-plane> -->
                         
             </a-marker>
 
